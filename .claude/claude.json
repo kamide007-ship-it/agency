@@ -1,0 +1,6 @@
+{
+  "agents_enabled": true,
+  "agents_directory": "../",
+  "auto_activate": true,
+  "session_hooks": ["./hooks/session-start.sh"]
+}
