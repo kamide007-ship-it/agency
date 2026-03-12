@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+
+    <!-- Viewport and responsive design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0ea5e9" />
+
+    <!-- Character encoding -->
+    <meta charset="utf-8" />
+
+    <!-- SEO and meta tags -->
+    <title>Agency App - Modern Web Application</title>
+    <meta
+      name="description"
+      content="A production-ready modern web application built with React, TypeScript, Tailwind CSS, and best practices for performance, accessibility, and UX."
+    />
+    <meta
+      name="keywords"
+      content="React, TypeScript, Tailwind CSS, Web App, Performance, Accessibility"
+    />
+    <meta name="author" content="Agency App Team" />
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://agency-app.example.com/" />
+    <meta property="og:title" content="Agency App - Modern Web Application" />
+    <meta
+      property="og:description"
+      content="A production-ready modern web application with React, TypeScript, and Tailwind CSS"
+    />
+    <meta property="og:image" content="/og-image.png" />
+
+    <!-- Twitter Card -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://agency-app.example.com/" />
+    <meta property="twitter:title" content="Agency App - Modern Web Application" />
+    <meta
+      property="twitter:description"
+      content="A production-ready modern web application with React, TypeScript, and Tailwind CSS"
+    />
+    <meta property="twitter:image" content="/og-image.png" />
+
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://agency-app.example.com/" />
+
+    <!-- Manifest for PWA -->
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Preload critical resources -->
+    <link rel="preload" as="style" href="/src/index.css" />
+
+    <!-- No referrer for privacy -->
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+    <!-- CSP header -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https:;"
+    />
+
+    <!-- X-UA-Compatible -->
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  </head>
+  <body>
+    <!-- Root element for React app -->
+    <div id="root"></div>
+
+    <!-- Vite entry point -->
+    <script type="module" src="/src/main.tsx"></script>
+
+    <!-- No-script fallback -->
+    <noscript>
+      <p>
+        This application requires JavaScript to be enabled. Please enable
+        JavaScript in your browser settings.
+      </p>
+    </noscript>
+  </body>
+</html>
