@@ -34,7 +34,7 @@ The Agency includes an **automatic agent activation system** that discovers and 
 # Just open a Claude Code session in this repository.
 
 # On session start, the system automatically:
-# ✅ Discovers all 110+ agents
+# ✅ Discovers all 111+ agents
 # ✅ Generates a searchable index (agent-index.json)
 # ✅ Prepares agents for instant activation
 ```
@@ -52,7 +52,7 @@ The system will instantly load the agent's personality and expertise. You get a 
 
 #### How It Works
 - **Session Start Hook**: `.claude/hooks/session-start.sh` automatically runs when your session starts
-- **Agent Discovery**: Scans 14 divisions and detects 110+ agents in < 1 second
+- **Agent Discovery**: Scans 14 divisions and detects 111+ agents in < 1 second
 - **Dynamic Index**: Creates `agent-index.json` for instant agent lookup
 - **Smart Matching**: Finds agents by name, description, or emoji
 - **Prompt Injection**: Loads agent personality into Claude's system prompt
@@ -98,7 +98,7 @@ The Agency includes a powerful **agent activation system** that automatically di
 #### 1. Automatic Discovery on Session Start
 When you open a Claude Code session in this repository:
 - The system scans all agent directories (14 divisions)
-- Detects 110+ agents and their metadata
+- Detects 111+ agents and their metadata
 - Generates a searchable JSON index
 - All happens automatically in < 1 second
 
@@ -116,7 +116,7 @@ The system will:
 
 #### 3. Dynamic Index Generation
 - **File**: `.claude/agent-index.json`
-- **Contents**: 110+ agents with name, description, emoji, path
+- **Contents**: 111+ agents with name, description, emoji, path
 - **Generated**: Automatically when session starts
 - **Updated**: Always reflects latest agents
 
@@ -148,7 +148,7 @@ The system will:
           ↓
 ┌─────────────────────────────────────────┐
 │  Agent System Ready ✅                   │
-│  All 110+ agents available for use      │
+│  All 111+ agents available for use      │
 └─────────────────────────────────────────┘
 ```
 
@@ -166,9 +166,10 @@ The system will:
 
 **`.claude/hooks/session-start.sh`** - Initialization script
 - Discovers all agents
-- Generates JSON index
-- Outputs ready message
+- Generates JSON index (with Japanese character support)
+- Outputs ready message (English or Japanese)
 - Runs automatically on session start
+- Environment variable: `AGENCY_LANG` (en/ja) for output language
 
 ### Available Commands
 
@@ -189,9 +190,50 @@ Search for agents:
 ./scripts/list-agents.sh --search security
 ```
 
+Search with Japanese keywords:
+```bash
+./scripts/list-agents.sh --search "日本語"
+./scripts/list-agents.sh --search "デザイン"
+```
+
 Output as JSON:
 ```bash
 ./scripts/list-agents.sh -j
+```
+
+### Language Support
+
+The system supports both **English** (default) and **Japanese** output.
+
+#### Japanese Output
+```bash
+# Display all agents in Japanese
+AGENCY_LANG=ja ./scripts/list-agents.sh
+
+# Display specific division in Japanese
+AGENCY_LANG=ja ./scripts/list-agents.sh engineering
+
+# Search and display results in Japanese
+AGENCY_LANG=ja ./scripts/list-agents.sh --search "セキュリティ"
+```
+
+#### Features
+- 🇯🇵 Full Japanese support in agent names and descriptions
+- 🔤 Japanese keyword search (日本語対応)
+- 📝 Japanese comments in all initialization scripts
+- 🌐 Language-aware output messages
+- 🔄 Environment variable control: `AGENCY_LANG=ja` or `AGENCY_LANG=en`
+
+#### Examples
+```bash
+# English (default)
+./scripts/list-agents.sh specialized
+
+# Japanese
+AGENCY_LANG=ja ./scripts/list-agents.sh specialized
+
+# Sample Japanese agent
+./scripts/list-agents.sh --search "日本語サポート"
 ```
 
 ### Examples
@@ -530,7 +572,7 @@ The agent activation system is built on a clean, automated architecture:
 
 **2. Agent Index** (`.claude/agent-index.json`)
 - Auto-generated on every session start
-- Contains 110+ agents with complete metadata
+- Contains 111+ agents with complete metadata
 - Schema: `{name, path, emoji, description}`
 - Enables instant agent lookup and activation
 - Committed to git for consistency across all sessions
