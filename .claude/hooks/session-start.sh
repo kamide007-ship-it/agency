@@ -58,30 +58,40 @@ initialize_agents() {
 # Create agent index for quick discovery
 create_agent_index() {
   local index_file="$REPO_ROOT/.claude/agent-index.json"
-  local agents_json="[]"
 
-  # Build JSON index of all agents
+  # Use a temporary file for JSON generation
+  local temp_json=$(mktemp)
   local first=true
-  agents_json="["
+
+  echo "[" > "$temp_json"
 
   for agent_file in $(find "$REPO_ROOT" -path "*/integrations" -prune -o -name "*-*.md" -type f -print | sort); do
     # Extract agent metadata from YAML frontmatter
     local name=$(grep "^name:" "$agent_file" | sed 's/^name: //' | tr -d '"')
-    local description=$(grep "^description:" "$agent_file" | sed 's/^description: //' | tr -d '"')
+    local description=$(grep "^description:" "$agent_file" | sed 's/^description: //')
     local emoji=$(grep "^emoji:" "$agent_file" | sed 's/^emoji: //' | tr -d '"')
 
     if [[ -n "$name" ]]; then
       if [[ $first == true ]]; then
         first=false
       else
-        agents_json+=","
+        echo "," >> "$temp_json"
       fi
-      agents_json+="{\"name\":\"$name\",\"path\":\"$agent_file\",\"emoji\":\"$emoji\",\"description\":\"$description\"}"
+
+      # Properly escape JSON strings
+      name=$(echo -n "$name" | jq -Rs '.')
+      description=$(echo -n "$description" | jq -Rs '.')
+      emoji=$(echo -n "$emoji" | jq -Rs '.')
+      agent_file=$(echo -n "$agent_file" | jq -Rs '.')
+
+      echo -n "{\"name\":$name,\"path\":$agent_file,\"emoji\":$emoji,\"description\":$description}" >> "$temp_json"
     fi
   done
 
-  agents_json+="]"
-  echo "$agents_json" > "$index_file"
+  echo "" >> "$temp_json"
+  echo "]" >> "$temp_json"
+
+  mv "$temp_json" "$index_file"
   log_info "Agent index created: $index_file"
 }
 
