@@ -68,6 +68,26 @@ Activate Security Engineer to audit this code
 
 以下のエージェントを参照して、必要なものをコピー・改変してください！
 
+### オプション3: 他のツールに展開して使用する
+
+The Agency は、Claude Code 以外のツールでも利用できるように変換・インストールできます。
+
+```bash
+# ステップ1 -- 対応ツール向けの統合ファイルを生成
+./scripts/convert.sh
+
+# ステップ2 -- 対話形式でインストール（利用可能なツールを自動検出）
+./scripts/install.sh
+
+# または特定のツールを直接指定
+./scripts/install.sh --tool cursor
+./scripts/install.sh --tool copilot
+./scripts/install.sh --tool aider
+./scripts/install.sh --tool windsurf
+```
+
+詳細は [マルチツール統合](README.md#-multi-tool-integrations) と各 `integrations/` ディレクトリの README を参照してください。
+
 ---
 
 ## 🤖 エージェント起動システム
@@ -253,6 +273,8 @@ Activate Game Designer to plan game mechanics
 - **English版**: [README.md](README.md)
 - **クイックスタート**: [README.md#-quick-start](README.md#-quick-start)
 - **エージェント詳細**: [README.md#-the-agency-roster](README.md#-the-agency-roster)
+- **統合ガイド**: [integrations/README.md](integrations/README.md)
+- **コントリビューション**: [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ---
 
@@ -274,6 +296,12 @@ Activate Game Designer to plan game mechanics
 4. **日本語で試す**
    ```bash
    AGENCY_LANG=ja ./scripts/list-agents.sh
+   ```
+
+5. **他ツールに展開する**
+   ```bash
+   ./scripts/convert.sh
+   ./scripts/install.sh --tool copilot
    ```
 
 ---
